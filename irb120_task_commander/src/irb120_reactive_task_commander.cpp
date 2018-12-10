@@ -213,7 +213,7 @@ int main(int argc, char** argv) {
 
     goal_flange_affine.linear() = R_down; //set the  goal orientation for flange to point down; will not need to change this for now
     //xxxx  use the x and y coordinates of the gear part, but specify a higher z value
-    flange_origin << g_perceived_object_pose.pose.position.x, g_perceived_object_pose.pose.position.y - 0.02, 0.001; //specify coordinates for the desired flange position (origin) with respect to the robot's base frame
+    flange_origin << g_perceived_object_pose.pose.position.x, g_perceived_object_pose.pose.position.y - 0.05, 0.001; //specify coordinates for the desired flange position (origin) with respect to the robot's base frame
     goal_flange_affine.translation() = flange_origin; //make this part of the flange  affine description
     ROS_INFO_STREAM("move to flange side= " << goal_flange_affine.translation().transpose() << endl);
     ROS_INFO_STREAM("with orientation: " << endl << goal_flange_affine.linear() << endl);
@@ -266,7 +266,7 @@ int main(int argc, char** argv) {
     //xxxxxxxxxxxxxxxxxx
 
     //depart vertically: same x and y, but move to higher z value
-    flange_origin << g_perceived_object_pose.pose.position.x, g_perceived_object_pose.pose.position.y - 0.05, 0.5;
+    flange_origin << g_perceived_object_pose.pose.position.x, g_perceived_object_pose.pose.position.y + 0.05, 0.5;
     goal_flange_affine.translation() = flange_origin;
     ROS_INFO_STREAM("move to flange origin= " << goal_flange_affine.translation().transpose() << endl);
     g_q_vec_arm_Xd = optimal_path.back(); //start from the joint-space pose that ended the prior plan
